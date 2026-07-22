@@ -1,0 +1,38 @@
+# ================= AYVU — configuração de produção =================
+
+# Não listar diretórios
+Options -Indexes
+
+# Página inicial padrão
+DirectoryIndex index.html
+
+# Charset padrão
+AddDefaultCharset utf-8
+
+# ---- Compressão (gzip) ----
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ---- Cache de arquivos estáticos ----
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css               "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/jpeg             "access plus 1 year"
+  ExpiresByType image/png              "access plus 1 year"
+  ExpiresByType image/webp             "access plus 1 year"
+  ExpiresByType image/svg+xml          "access plus 1 year"
+  ExpiresByType video/mp4              "access plus 1 year"
+  ExpiresByType text/html              "access plus 0 seconds"
+</IfModule>
+
+# ---- Forçar HTTPS ----
+# Descomente as 4 linhas abaixo depois que o SSL (AutoSSL) estiver ativo no domínio.
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} off
+#   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>

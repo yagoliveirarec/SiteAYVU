@@ -1,0 +1,30 @@
+# ===== Dependências =====
+node_modules/
+
+# ===== Saída de build =====
+dist/
+build/
+.cache/
+
+# ===== Logs =====
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ===== Sistema operacional / editores =====
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# ===== Segredos e chaves (NUNCA versionar) =====
+.env
+.env.*
+*.pem
+*.key
+id_rsa*
+*_rsa
+*_ed25519

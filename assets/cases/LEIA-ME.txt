@@ -1,0 +1,43 @@
+Coloque aqui as midias dos cases (imagens e videos).
+
+Recomendacoes:
+- Imagem: JPG ou WEBP, proporcao ~4:3 ou 16:10, largura minima 1200px.
+  Ex.: medicina.jpg, advocacia.jpg, arquitetura.jpg
+- Video (loop no card): MP4 (H.264), curto (5 a 12s), sem audio, < 5 MB.
+  Sempre acompanhe de um "poster" (imagem) para exibir algo antes do video carregar.
+  Ex.: medicina.mp4 + medicina.jpg
+
+LAZY-LOAD (ja ativo)
+--------------------
+As midias carregam so quando o case se aproxima da tela, e os videos dao
+play/pause automaticamente conforme a visibilidade. Para isso, use o atributo
+data-src (e NAO src).
+
+No index.html, dentro de <div class="case-media">, antes do bloco
+<div class="case-media-ph">, adicione:
+
+  <img data-src="assets/cases/medicina.jpg" alt="Descricao do case">
+
+ou, para video em loop:
+
+  <video data-src="assets/cases/medicina.mp4" poster="assets/cases/medicina.jpg"
+         muted loop playsinline preload="none"></video>
+
+BLUR-UP (opcional)
+------------------
+Para a transicao com preview desfocado que ganha nitidez, adicione data-lqip
+apontando para uma versao minuscula da imagem (30 a 40px de largura):
+
+  <img data-src="assets/cases/medicina.jpg"
+       data-lqip="assets/cases/medicina-tiny.jpg" alt="Descricao do case">
+
+- Em video, o atributo poster ja e usado como preview automaticamente; nao
+  precisa de data-lqip.
+- Gere o -tiny reduzindo a imagem original para ~40px de largura (qualquer
+  editor ou ferramenta de linha de comando serve).
+
+Observacoes:
+- Pode manter o bloco <div class="case-media-ph"> (placeholder): ele some
+  sozinho quando a midia termina de carregar.
+- Nao use "src" direto, senao o navegador baixa o arquivo no carregamento
+  inicial e o lazy-load perde o efeito.
