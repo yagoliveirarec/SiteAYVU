@@ -1,0 +1,5 @@
+# Normaliza finais de linha para LF no repositório (deploy em Linux/cPanel)
+* text=auto eol=lf
+
+# Scripts do Windows mantêm CRLF na cópia local
+*.ps1 text eol=crlf
